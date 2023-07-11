@@ -1,0 +1,50 @@
+<body>
+  
+    <h2 class="text-center mb-3" style="color: aliceblue;">LIST TEST</h2>
+    <div style="margin-right: 5%;">
+      <button class="btn btn-info" [routerLink]="['../addTest']" 
+  style="float: right; margin-bottom: 10px ; margin-right: 150px;">Add Test</button>
+  </div>
+    
+      <button class="btn btn-info" style="margin-left: 220px;" (click)="home()">Home</button>
+     
+        <input style="margin-left: 900px; width: 300px; margin-bottom: 20px;" class="form-control  search-input" type="text" placeholder="Search text here..." [(ngModel)]="filter">
+        <!-- <input style="margin-right: 210px; width: 300px;" class="form-control  search-input" type="text" placeholder="Search text here..."[(ngModel)]="filter"> -->
+
+ 
+
+
+    <table class="table table-hover" id="myTable">
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-nowrap">Test Number</th>
+          <th class="text-nowrap text-left">Test Name</th>
+          <th class="text-nowrap">Price</th>
+          <th class="text-nowrap">Low Range</th>
+          <th class="text-nowrap">High Range</th>
+          <th class="text-nowrap">Unit</th>
+          <th class="text-nowrap">Added Date</th>
+          <th class="text-nowrap">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let test of labTechnicianServices.ltests | filter:filter | paginate:{itemsPerPage:5,currentPage:page}">
+          <td class="text-nowrap text-center">{{test.testNumber}}</td>
+          <td class="text-nowrap text-left">{{test.testName}}</td>
+          <td class="text-nowrap text-center">{{test.testPrice}}</td>
+          <td class="text-nowrap text-center">{{test.lowRange}}</td>
+          <td class="text-nowrap text-center">{{test.highRange}}</td>
+          <td class="text-nowrap text-center">{{test.unit}}</td>
+          <td class="text-nowrap text-center">{{test.testCreatedOn}}</td>
+          <td class="text-nowrap text-center">
+            <button class="btn btn-danger" (click)="DeleteTest(test.testId)">X</button>&nbsp;
+            <button class="btn btn-info ml-2" (click)="updateTest(test.testId)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="footer text-center mt-3" style="margin-left: 25%;">
+      <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>
+ 
+</body>

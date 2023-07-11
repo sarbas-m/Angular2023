@@ -1,0 +1,87 @@
+<body class = "banner">
+
+    <section class="vh-100 bg-image">
+        <!-- <img src="<spring:url value="/resources/images/background4.jpg" />" alt="Image"> -->
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 25px; margin-bottom: 40px; background-color: #808080;">
+                            <h2 style="text-align: center; font-size: 200%; font-family: fantasy;">ADD TEST</h2>
+                            <div class="card-body p-5">
+
+
+
+
+
+<form name="testform" #form="ngForm" autocomplete="false" (ngSubmit)="onSubmit(form)">
+    <input type="hidden" name="testId" [(ngModel)]="labTechnicianServices.formData.testId">
+
+    <br>
+    <div class="form-group">
+        <label>Test Name</label>
+        <input name="testName" #testName="ngModel" [(ngModel)]="labTechnicianServices.formData.testName"
+            class="form-control" placeholder="Enter Test Name" required pattern="[A-Za-z\s]+" title="Only alphabets are allowed">
+        <div class="validation-error" *ngIf="testName.touched&& testName.invalid">
+            <div>Test Name is Required</div>
+        </div>
+    </div>
+    
+    <br>
+
+    <div class="form-group">
+        <label>Low Range</label>                                
+        <input name="lowRange" #lowRange="ngModel" [(ngModel)]="labTechnicianServices.formData.lowRange"
+            class="form-control" placeholder="Enter Low Range" required pattern="[0-9]+(\.[0-9]+)?"
+            >
+        <div class="validation-error" *ngIf="lowRange.touched&& lowRange.invalid">
+            <div>Low Range is Required</div>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label>High Range</label>
+        <input name="highRange" #highRange="ngModel" [(ngModel)]="labTechnicianServices.formData.highRange"
+            class="form-control" placeholder="Enter High Range" required pattern="[0-9.]*" title="Only numeric values and period are allowed">
+        <div class="validation-error" *ngIf="highRange.touched&& highRange.invalid">
+            <div>High Range is Required</div>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label>Unit</label>
+        <input name="unit" #unit="ngModel" [(ngModel)]="labTechnicianServices.formData.unit" class="form-control"
+            placeholder="Enter Unit" required pattern="[a-zA-Z/]+" title="Only alphabets and forward slash (/) are allowed">
+        <div class="validation-error" *ngIf="unit.touched&& unit.invalid">
+            <div>Unit is Required</div>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label>Test Price</label>
+        <input name="testPrice" #testPrice="ngModel" [(ngModel)]="labTechnicianServices.formData.testPrice"
+            class="form-control" placeholder="Enter Test Price" required pattern="([5-9]\d+|\d{3,})(\.\d{1,2})?" title="Enter a valid test price (minimum 50)">
+        <div class="validation-error" *ngIf="testPrice.touched&& testPrice.invalid">
+            <div>Test Price is Required</div>
+        </div>
+    </div>
+    <br>
+ 
+
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+            class="btn btn-lg btn-primary form-control">save</button>
+
+    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>

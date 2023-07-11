@@ -1,0 +1,67 @@
+<body>
+
+  <section class="vh-100 bg-image">
+    <div class="banner">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div
+                    class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="content">
+                        <div class="card" style="border-radius: 25px; margin-top: 65px; background:#F0F3F4;">
+                            <div class="card-body p-5">
+                              <h3 class="text-center mb-3" >Test Report</h3>
+
+
+
+
+
+
+    
+    <div *ngFor="let report of labTechnicianServices.ltestReportPatient;last as isLast">
+      <div *ngIf="isLast">
+        <p><strong> Name   :</strong> {{report.testPrescription.appointment.patient.patientName}}</p>
+        <p><strong>Age  : </strong>{{report.testPrescription.appointment.patient.patientAge}}</p>
+        <p><strong>BloodGroup :</strong> {{report.testPrescription.appointment.patient.patientBloodGroup}}</p>
+        <p><strong>Prescribed Doctor :</strong> {{report.testPrescription.appointment.doctor.doctorName}}</p>
+        <p><strong>Date : </strong>{{report.reportCreatedOn}}</p>
+      </div>
+    </div>
+    <table class="table table-hover mt-3 rounded-table">
+      <thead class="thead-dark text-center">
+        <tr>
+          <th class="text-nowrap">Test Name</th>
+          <th class="text-nowrap">Low Range</th>
+          <th class="text-nowrap">High Range</th>
+          <th class="text-nowrap">Unit</th>
+          <th class="text-nowrap">Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of labTechnicianServices.ltestReportPatient">
+          <td class="text-nowrap text-center">{{ report.testPrescription.test.testName }}</td>
+          <td class="text-nowrap text-center">{{ report.testPrescription.test.lowRange }}</td>
+          <td class="text-nowrap text-center">{{ report.testPrescription.test.highRange }}</td>
+          <td class="text-nowrap text-center">{{ report.testPrescription.test.unit }}</td>
+          <td class="text-nowrap text-center">{{ report.testActualValue}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="labTechnicianServices.ltestReportPatient.length > 0" class="d-flex justify-content-center mt-3">
+      <button class="btn btn-info" (click)="Bill(labTechnicianServices.ltestReportPatient[labTechnicianServices.ltestReportPatient.length - 1].testPrescription.appointmentId)">
+        Generate Bill
+      </button>
+    </div>
+
+  </div>
+</div>
+ </div>
+</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ 
+ </section>
+  
+</body>

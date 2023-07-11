@@ -15,6 +15,19 @@ import { ReceptionistComponent } from './receptionist/receptionist.component';
 import { PharmacistComponent } from './pharmacist/pharmacist.component';
 import { LabtechnicianComponent } from './labtechnician/labtechnician.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { ListLabTestComponent } from './labtechnician/list-lab-test/list-lab-test.component';
+import { AddLabtestComponent } from './labtechnician/add-labtest/add-labtest.component';
+import { EditLabtestComponent } from './labtechnician/edit-labtest/edit-labtest.component';
+import { ListLabtestprescriptionComponent } from './labtechnician/list-labtestprescription/list-labtestprescription.component';
+import { ListLabtestreportComponent } from './labtechnician/list-labtestreport/list-labtestreport.component';
+import { AddLabtestreportComponent } from './labtechnician/add-labtestreport/add-labtestreport.component';
+import { EditLabtestreportComponent } from './labtechnician/edit-labtestreport/edit-labtestreport.component';
+import { AddTestResultComponent } from './labtechnician/add-test-result/add-test-result.component';
+import { EditTestResultComponent } from './labtechnician/edit-test-result/edit-test-result.component';
+import { ViewTestReportComponent } from './labtechnician/view-test-report/view-test-report.component';
+import { ViewTestBillComponent } from './labtechnician/view-test-bill/view-test-bill.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +35,20 @@ import { ReactiveFormsModule } from '@angular/forms';
     DoctorComponent,
     ReceptionistComponent,
     PharmacistComponent,
-    LabtechnicianComponent
+    LabtechnicianComponent,
+    ListLabTestComponent,
+    AddLabtestComponent,
+    EditLabtestComponent,
+    ListLabtestprescriptionComponent,
+    ListLabtestreportComponent,
+    AddLabtestreportComponent,
+    EditLabtestreportComponent,
+    AddTestResultComponent,
+    EditTestResultComponent,
+    ViewTestReportComponent,
+    ViewTestBillComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -37,7 +63,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    RouterModule
 
   ],
   providers: [],

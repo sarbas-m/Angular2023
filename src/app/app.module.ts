@@ -15,6 +15,12 @@ import { ReceptionistComponent } from './receptionist/receptionist.component';
 import { PharmacistComponent } from './pharmacist/pharmacist.component';
 import { LabtechnicianComponent } from './labtechnician/labtechnician.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RlistPatientComponent } from './receptionist/rlist-patient/rlist-patient.component';
+import { RaddPatientComponent } from './receptionist/radd-patient/radd-patient.component';
+import { ReditPatientComponent } from './receptionist/redit-patient/redit-patient.component';
+import { RbookAppointmentComponent } from './receptionist/rbook-appointment/rbook-appointment.component';
+import { RlistAppointmentComponent } from './receptionist/rlist-appointment/rlist-appointment.component';
+import { RbillPatientComponent } from './receptionist/rbill-patient/rbill-patient.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     DoctorComponent,
     ReceptionistComponent,
     PharmacistComponent,
-    LabtechnicianComponent
+    LabtechnicianComponent,
+    RlistPatientComponent,
+    RaddPatientComponent,
+    ReditPatientComponent,
+    RbookAppointmentComponent,
+    RlistAppointmentComponent,
+    RbillPatientComponent
   ],
   imports: [
     BrowserModule,

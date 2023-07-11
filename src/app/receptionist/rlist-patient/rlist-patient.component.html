@@ -1,0 +1,67 @@
+<body>
+    
+<h2 style="text-align: center; font-size: 200%; font-family: fantasy; color: aliceblue;">Patient List</h2>
+
+
+
+<div style="margin-right: 5%;">
+    <button class="btn btn-info" [routerLink]="['../radd-patient']" 
+style="float: right; margin-bottom: 10px;">Add Patient</button>
+</div>
+
+<div style="margin-top: 6%; margin-left: 5%;"><button class="btn btn-info" (click)="ToHome()">HOME</button></div>
+        <div style="margin-top:6% ;">
+            <input style="width: 400px; margin-left: 45%; margin-top: -8%;" class="form-control w-50 search-input" type="text" placeholder="search text here.." [(ngModel)]="filter">
+
+        </div>
+    
+
+
+<div>
+<table class="table table-bordered table-striped" id="myTable"> <!-- bootstrap class-->
+    <thead>
+    <tr>
+        <th>RegistrationNumber</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>PhoneNumber</th>
+        <th>Address</th>
+        <th>BloodGroup</th>
+        <th>Mail</th>
+        <th>CreatedDate</th>
+        <th>Action</th>
+        
+    
+    </tr>
+    
+    </thead>
+    <tbody>
+    <tr *ngFor="let pat of receptionistService.patients | filter:filter | paginate:{itemsPerPage:5,currentPage:page}"> <!-- ngfor foreach  loop assigning all in emp employees is array -->
+        <td>{{pat.registrationNumber}}</td>
+        <td>{{pat.patientName}}</td>
+        <td>{{pat.patientAge}}</td>
+        <td>{{pat.patientGender}}</td>
+        <td>{{pat.patientPhoneNumber}}</td>
+        <td>{{pat.patientAddress}}</td>
+        <td>{{pat.patientBloodGroup}}</td>
+        <td>{{pat.patientEmail}}</td>
+        <td>{{pat.patientCreatedOn}}</td>
+        <td>
+            <button class="btn btn-sm btn-outline-danger" (click)="DeletePatient(pat.patientId)">X</button>&nbsp;
+            <button class="btn btn-info" (click)="updatePatient(pat.patientId)" style="margin-left: 10px;">Edit</button>
+            <button class="btn btn-info" (click)="forPatientId(pat.patientId)" style="margin-left: 10px;">Book</button>
+        </td>
+    
+    </tr>
+    
+    </tbody>
+    
+    </table>
+</div>
+    <div class="footer" style="margin-left: 73%;">
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    
+    </div>
+    
+</body>

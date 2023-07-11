@@ -25,6 +25,13 @@ import { AddDoctorMedicineComponent } from './doctor/add-doctor-medicine/add-doc
 import { AddDoctorTestComponent } from './doctor/add-doctor-test/add-doctor-test.component';
 import { ListDoctorFormComponent } from './doctor/list-doctor-form/list-doctor-form.component';
 
+import { RlistPatientComponent } from './receptionist/rlist-patient/rlist-patient.component';
+import { RaddPatientComponent } from './receptionist/radd-patient/radd-patient.component';
+import { ReditPatientComponent } from './receptionist/redit-patient/redit-patient.component';
+import { RbookAppointmentComponent } from './receptionist/rbook-appointment/rbook-appointment.component';
+import { RlistAppointmentComponent } from './receptionist/rlist-appointment/rlist-appointment.component';
+import { RbillPatientComponent } from './receptionist/rbill-patient/rbill-patient.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +48,13 @@ import { ListDoctorFormComponent } from './doctor/list-doctor-form/list-doctor-f
     AddDoctorMedicineComponent,
     AddDoctorTestComponent,
     ListDoctorFormComponent,
+
+    RlistPatientComponent,
+    RaddPatientComponent,
+    ReditPatientComponent,
+    RbookAppointmentComponent,
+    RlistAppointmentComponent,
+    RbillPatientComponent
   ],
   imports: [
     BrowserModule,

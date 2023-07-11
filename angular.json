@@ -127,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CmsFinal"
+    }
+  },
+  "defaultProject": "CmsFinal",
+  "cli": {
+    "analytics": "4d96517f-3a84-4a6b-9ede-f9ac5d893515"
+  }
 }

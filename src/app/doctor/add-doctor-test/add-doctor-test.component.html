@@ -1,0 +1,37 @@
+<body >
+    <form name="notesform" #form="ngForm" autocomplete="false" (ngSubmit)="onSubmit(form)">
+        <input type="hidden" name="testPrescriptionId" [(ngModel)]="doctorServices.formDataTest.testPrescriptionId">
+    <div class="form-group">
+        <label><strong>Test :</strong></label>
+        <select name="testId" id="testId" class="form-control" required 
+        #testId="ngModel" [(ngModel)]="doctorServices.formDataTest.testId">
+        <option value=0 disabled>Choose Test</option>>
+            <option *ngFor="let test of doctorServices.dtests" value="{{test.testId}}">
+                {{test.testName}}
+            </option>
+        </select>
+        <div class="validation-error" *ngIf="testId.touched&& testId.invalid">
+            <div style="color: rgb(245, 12, 12);">*Test is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+        style="margin-top: 10px;"  class="btn btn-1g btn-primary form-control">Submit</button>
+    
+    </div>
+    </form>
+
+    <table class="table table-hover" style="margin-top: 20px;"  id="myTable">
+        <tbody class="thead-dark">
+            <tr
+                *ngFor="let app of doctorServices.dtesthistorys ">
+                <td>{{app.test.testName}}</td>
+                <td><button class="btn btn-sm btn-outline-danger" (click)="deleteTest(app.testPrescriptionId,app.appointmentId,app.appointment.doctor.userId)"
+                        style="margin-left: 10px;">X</button></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <br>
+    <button class="btn btn-info" (click)="disableAppointment()" style="margin-left: 550px; margin-bottom: 40px;">Consult Next Patient</button>
+    </body>

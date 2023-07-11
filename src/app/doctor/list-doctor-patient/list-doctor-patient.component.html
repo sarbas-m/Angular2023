@@ -1,0 +1,31 @@
+<body class="banner">
+
+<h3 style="text-align: center; color: aliceblue;  "><strong>PATIENT DETAILS</strong></h3>
+
+<table class="table table-hover" style="margin-top: 150px;"  id="myTable">
+    <thead class="thead-dark">
+        <tr>
+            <th>Patient RegNo</th>
+            <th>Name</th>
+            <th>Blood Gruop</th>
+            <th>Age</th>
+            <th>Patient Reg.Date</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr
+            *ngFor="let app of doctorServices.dappointments | filter:filter | paginate:{itemsPerPage:3,currentPage:page}">
+
+            <td>{{app.patient.registrationNumber}}</td>
+            <td>{{app.patient.patientName}}</td>
+            <td>{{app.patient.patientBloodGroup}}</td>
+            <td>{{app.patient.patientAge}}</td>
+            <td>{{app.patient.patientCreatedOn}}</td>
+            <td><button class="btn btn-info" (click)="patientHistory(app.patient.patientId,app.appointmentId)" style="margin-left: 10px;">Patient History</button></td>
+
+        </tr>
+    </tbody>
+</table>
+</body>  

@@ -1,0 +1,226 @@
+<body>
+  <div class="card-body p-5">
+    <!-- <div class="container" style="margin-top: 20px;"> -->
+    <h4 style="text-align: center;color: aliceblue;"><strong>Patient History</strong></h4>
+    <h4 style="color: aliceblue;"><strong>Diagnos History</strong></h4>
+    <button (click)="toggleDetails()">Click more</button>
+    <div *ngIf="showDetails">
+      <div *ngIf="doctorServices.ddiagnosHistorys.length > 0; else noDiagnosHistory">
+        <div class="container" style="width:70% ;">
+          <div class="header">
+            <div class="form-control">
+              <input class="form-control" type="text" placeholder="search text here.." [(ngModel)]="filter">
+            </div>
+          </div>
+        </div>
+        <table class="table table-hover" id="myTable">
+          <thead>
+            <tr>
+              <th>Diagnos</th>
+              <th>Doctor Name</th>
+              <th>Department</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let app of doctorServices.ddiagnosHistorys | filter:filter | paginate:{itemsPerPage:3,currentPage:page}">
+              <td>{{ app.diagnos }}</td>
+              <td>{{ app.appointment.doctor.doctorName }}</td>
+              <td>{{ app.appointment.doctor.department.departmentName}}</td>
+              <td>{{ app.diagnosCreatedOn }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="footer" style="margin-left: 65%;">
+
+          <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+
+        </div>
+      </div>
+
+      <ng-template #noDiagnosHistory>
+        <p style="color: aliceblue;">No history available</p>
+      </ng-template>
+    </div>
+    <h4 style="color: aliceblue;"><strong>Doctor Note History</strong></h4>
+    <button (click)="toggleDetailsNote()">Click more</button>
+    <div *ngIf="showDetailsNote">
+      <div *ngIf="doctorServices.ddoctornotes.length > 0; else noNoteHistory">
+        <div class="container"  style="width:70% ;">
+          <div class="header">
+            <div class="form-control">
+              <input class="form-control" type="text" placeholder="search text here.." [(ngModel)]="filter">
+            </div>
+          </div>
+        </div>
+        <table class="table table-hover" id="myTable">
+          <thead>
+            <tr>
+              <th>Note</th>
+              <th>Doctor Name</th>
+              <th>Department</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let app of doctorServices.ddoctornotes | filter:filter | paginate:{itemsPerPage:3,currentPage:page}">
+              <td>{{ app.note }}</td>
+              <td>{{ app.appointment.doctor.doctorName }}</td>
+              <td>{{ app.appointment.doctor.department.departmentName }}</td>
+              <td>{{ app.doctorNoteCreatedOn }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="footer" style="margin-left: 65%;">
+
+          <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+
+        </div>
+      </div>
+      <ng-template #noNoteHistory>
+        <p style="color: aliceblue;">No history available</p>
+      </ng-template>
+    </div>
+
+    <h4 style="color: aliceblue;"><strong>Medicine History</strong></h4>
+    <button (click)="toggleDetailsMed()">Click more</button>
+    <div *ngIf="showDetailsMed">
+      <div *ngIf="doctorServices.dmedicinehistorys.length > 0; else noMedHistory">
+        <div class="container" style="width:70% ;">
+          <div class="header">
+            <div class="form-control">
+              <input class="form-control" type="text" placeholder="search text here.." [(ngModel)]="filter">
+            </div>
+          </div>
+        </div>
+        <table class="table table-hover" id="myTable">
+          <thead>
+            <tr>
+              <th>Medicine</th>
+              <th>Dosage</th>
+              <th>Days</th>
+              <th>Doctor Name</th>
+              <th>Department</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let app of doctorServices.dmedicinehistorys | filter:filter | paginate:{itemsPerPage:3,currentPage:page}">
+              <td>{{ app.medicine.medicineName }}</td>
+              <td>{{ app.dosage.dosagePattern}}</td>
+              <td>{{ app.days}}</td>
+              <td>{{ app.appointment.doctor.doctorName }}</td>
+              <td>{{ app.appointment.doctor.department.departmentName }}</td>
+              <td>{{ app.medPresCreatedOn}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="footer" style="margin-left: 65%;">
+
+          <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+
+        </div>
+      </div>
+      <ng-template #noMedHistory>
+        <p style="color: aliceblue;">No history available</p>
+      </ng-template>
+    </div>
+    <h4 style="color: aliceblue;"><strong>Test History</strong></h4>
+    <button (click)="toggleDetailsTest()">Click more</button>
+    <div *ngIf="showDetailsTest">
+      <div *ngIf="doctorServices.dtesthistorys.length > 0; else noTestHistory">
+        <div class="container" style="width:70% ;">
+          <div class="header">
+            <div class="form-control">
+              <input class="form-control" type="text" placeholder="search text here.." [(ngModel)]="filter">
+            </div>
+          </div>
+        </div>
+        <table class="table table-hover" id="myTable">
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Doctor Name</th>
+              <th>Department</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let app of doctorServices.dtesthistorys | filter:filter | paginate:{itemsPerPage:1,currentPage:page}">
+              <td>{{ app.test.testName}}</td>
+              <td>{{ app.appointment.doctor.doctorName }}</td>
+              <td>{{ app.appointment.doctor.department.departmentName }}</td>
+              <td>{{ app.testPresCreatedOn}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="footer" style="margin-left: 65%;">
+
+          <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+
+        </div>
+      </div>
+      <ng-template #noTestHistory>
+        <p style="color: aliceblue;">No history available</p>
+      </ng-template>
+    </div>
+    <h4 style="color: aliceblue;"><strong>Test Report History</strong></h4>
+    <button (click)="toggleDetailsRep()">Click more</button>
+    <div *ngIf="showDetailsRep">
+      <div *ngIf="doctorServices.dtestreporthistorys.length > 0; else noTestReportHistory">
+        <div class="container" style="width:70% ;">
+          <div class="header">
+            <div class="form-control">
+              <input class="form-control" type="text" placeholder="search text here.." [(ngModel)]="filter">
+            </div>
+          </div>
+        </div>
+        <table class="table table-hover" id="myTable">
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Low Range</th>
+              <th>High Range</th>
+              <th>Result</th>
+              <th>Unit</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let app of doctorServices.dtestreporthistorys | filter:filter | paginate:{itemsPerPage:3,currentPage:page}">
+              <td>{{ app.testPrescription.test.testName}}</td>
+              <td>{{ app.testPrescription.test.lowRange}}</td>
+              <td>{{ app.testPrescription.test.highRange}}</td>
+              <td>{{ app.testActualValue}}</td>
+              <td>{{ app.testPrescription.test.unit}}</td>
+              <td>{{ app.reportCreatedOn}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="footer"style="margin-left: 65%;">
+
+          <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+
+        </div>
+      </div>
+      <ng-template #noTestReportHistory>
+        <p style="color: aliceblue;">No history available</p>
+      </ng-template>
+    </div>
+    <br><br>
+    <button class="btn btn-info" (click)="startDiagnos()" style="margin-left: 500px;">Start Diagnos</button>
+  </div>
+
+</body>

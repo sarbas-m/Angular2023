@@ -1,0 +1,28 @@
+ <form name="notesform" #form="ngForm" autocomplete="false" (ngSubmit)="onSubmit(form)">
+    <input type="hidden" name="doctorNoteId" [(ngModel)]="doctorServices.formDataNote.doctorNoteId">
+    <div class="form-group">
+        <label style="color: black;" ><strong>Notes :</strong></label>
+        <input name="note" #note="ngModel" [(ngModel)]="doctorServices.formDataNote.note"
+            class="form-control" placeholder="Enter Notes" pattern="^[A-Za-z]+(\s[A-Za-z]+)*$" minlength="3"  required>
+        <div class="validation-error" *ngIf="note.touched&& note.invalid">
+            <div style="color: hwb(0 2% 1%)" >*Note is required</div>
+            <div *ngIf="note.errors.pattern">Only alphabets</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+        style="margin-top: 10px;" class="btn btn-1g btn-primary form-control">Submit</button>
+
+    </div>
+   
+</form>
+<table class="table table-hover" style="margin-top: 20px;"  id="myTable">
+    <tbody class="thead-dark">
+        <tr
+            *ngFor="let app of doctorServices.ddoctornotes ">
+            <td>{{app.note}}</td>
+            <td><button class="btn btn-sm btn-outline-danger" (click)="deleteNote(app.doctorNoteId,app.appointmentId,app.appointment.doctor.userId)"
+                    style="margin-left: 10px;">X</button></td>
+        </tr>
+    </tbody>
+</table>

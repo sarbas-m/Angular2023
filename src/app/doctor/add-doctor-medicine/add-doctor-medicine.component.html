@@ -1,0 +1,68 @@
+
+<form name="notesform" #form="ngForm" autocomplete="false" (ngSubmit)="onSubmit(form)">
+    <input type="hidden" name="medicinePrescriptionId" [(ngModel)]="doctorServices.formDataMed.medicinePrescriptionId">
+<div class="form-group">
+    <label style="color: black;" ><strong>Medicine :</strong></label>
+    <select name="medicineId" id="medicineId" class="form-control" required 
+    #medicineId="ngModel" [(ngModel)]="doctorServices.formDataMed.medicineId">
+    <option value=0 disabled>Choose Medicine</option>>
+        <option *ngFor="let med of doctorServices.dmedicines" value="{{med.medicineId}}">
+            {{med.medicineName}}
+        </option>
+    </select>
+    <div class="validation-error" *ngIf="medicineId.touched&& medicineId.invalid">
+        <div style="color: hwb(0 2% 1%)">*Medicine Name is required</div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label style="color: black;"><strong>Dosage :</strong> </label>
+    <select name="dosageId" id="dosageId" class="form-control" required 
+    #dosageId="ngModel" [(ngModel)]="doctorServices.formDataMed.dosageId">
+    <option value=0 disabled style="color: hwb(0 2% 1%)">Choose Dosage</option>>
+        <option  value="1">1-1-1</option>
+        <option  value="2">1-0-1</option>
+        <option  value="3">1-0-0</option>
+        <option  value="4">0-1-1</option>
+        <option  value="5">0-0-1</option>
+        <option  value="6">0-1-0</option>
+        <option  value="7">1-1-0</option>
+    </select>
+    <div class="validation-error" *ngIf="dosageId.touched&& dosageId.invalid">
+        <div style="color: hwb(0 2% 1%)"  >*Dosage</div>
+    </div>
+    <div class="form-group">
+        <label style="color: black;"><strong>Days :</strong></label>
+        <input name="days" #days="ngModel" [(ngModel)]="doctorServices.formDataMed.days"
+            class="form-control" placeholder="Enter Days" pattern="^([1-9]|[1-8][0-9]|90)$" required>
+        <div class="validation-error" *ngIf="days.touched&& days.invalid">
+            <div style="color: hwb(0 2% 1%)">*Days is required</div>
+            <div style="color: hwb(0 2% 1%)" *ngIf="days.errors.pattern">*Days should be below 90</div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="form-group">
+    <button type="submit" [disabled]="!(form.valid && form.dirty)"
+        class="btn btn-1g btn-primary form-control"  style="margin-top: 10px;" >Submit</button>
+
+</div>
+</form>
+
+<table class="table table-hover" style="margin-top: 20px;"  id="myTable">
+    <thead class="thead-dark">   
+         <tbody class="thead-dark">
+        <tr
+            *ngFor="let app of doctorServices.dmedicinehistorys ">
+            <td>{{app.medicine.medicineName}}</td>
+            <td>{{app.dosage.dosagePattern}}</td>
+            <td>{{app.days}}</td>
+            <td><button class="btn btn-sm btn-outline-danger" (click)="deleteMedicine(app.medicinePrescriptionId,app.appointmentId,app.appointment.doctor.userId)"
+                    style="margin-left: 10px;">X</button></td>
+        </tr>
+    </tbody>
+  
+</table>

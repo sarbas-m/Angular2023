@@ -1,0 +1,69 @@
+<body class="banner">
+  
+    <h3 class="heading-style" style="color: aliceblue;">TEST BILL</h3>
+    <section class="vh-100 bg-image">
+      <!--  <img src="<spring:url value="/resources/images/background4.jpg" />" alt="Image"> -->
+      <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+      <div
+      class="row d-flex justify-content-center align-items-center h-1">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+      <div class="content">
+      <div class="card"
+      style="border-radius: 25px; margin-top: 15px;">
+      <div class="card-body p-5">
+      <div class="fa fa-hospital-o" style="font-size:48px; margin-bottom: 25px;">
+      <h4 style="margin-left: 25%;">MED STAR HOSPITAL</h4>
+      <h6 style="margin-left: 30%;">Thiruvananthapuram</h6>
+      <h6 style="margin-left: 40%;">Kerala</h6>
+      
+      
+      </div>
+    <ng-container *ngFor="let report of labTechnicianServices.ltestbill; last as isLast">
+      <ng-container *ngIf="isLast">
+        <p><strong>Patient Name : </strong> {{report.patientName}}</p>
+        <p><strong>Patient RegNo : </strong>{{report.patientRegNo}}</p>
+        <p><strong>Bill Number : </strong>{{report.billNo}}</p>
+        <p><strong>Date : </strong>{{report.billDate}}</p>
+        <!-- <p>Date:{{report.}}</p> -->
+      </ng-container>
+    </ng-container>
+  
+    <table class="table table-custom">
+      <thead>
+        <tr>
+          <th style="text-align: left;">Test Name</th>
+          <th style="text-align: left;">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+        <tr *ngFor="let report of labTechnicianServices.ltestbill">
+          <td>{{ report.testName}}</td>
+          <td>{{ report.testPrice}}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- <p *ngFor="let report of labTechnicianServices.ltestbill">Total Price :{{report.totalPrice}}</p> -->
+    <ng-container *ngFor="let report of labTechnicianServices.ltestbill; last as isLast">
+      <ng-container *ngIf="isLast">
+        <p style="margin-left: 45%;"><strong> Total Price: {{report.totalPrice}}</strong></p>
+      </ng-container>
+    </ng-container>
+
+    <button class="btn btn-info" (click)="DisablePrescription()">Print Bill</button>
+  
+
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+  
+    <!--<button class="btn btn-info" (click)="DisablePrescription()">Print Bill</button>-->
+  
+</body>

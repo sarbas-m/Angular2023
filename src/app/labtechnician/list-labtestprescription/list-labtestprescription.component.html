@@ -1,0 +1,46 @@
+<body>
+  <!-- <div class="container mt-5"> -->
+    <h3 class="text-center" style="color: aliceblue;">TEST PRESCRIBED FOR PATIENTS</h3>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-info" style="margin-left: 220px;" (click)="home()">Home</button>
+
+      <!-- <button class="btn btn-info" (click)="home()">Home</button> -->
+      <input style="margin-right: 210px; width: 300px;" class="form-control opacity-50" type="text" placeholder="Search text here..." [(ngModel)]="filter">
+
+    </div>
+  
+    <!-- <table class="table table-bordered table-striped mt-3 rounded"  id="myTable"> -->
+      <table class="table table-hover mt-3 rounded-table" id="myTable">
+
+      <thead>
+        <tr>
+          <th class="text-center">Reg No</th>
+          <th class="text-left">Patient Name</th>
+          <th class="text-center">Test Name</th>
+          <th class="text-center">Doctor Name</th>
+          <th class="text-center">Department</th>
+          <th class="text-center">Created On</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let test of labTechnicianServices.ltestprescriptions | filter:filter | paginate:{itemsPerPage:3,currentPage:page}">
+          <td class="text-center">{{test.appointment.patient.registrationNumber}}</td>
+          <td class="text-left">{{test.appointment.patient.patientName}}</td>
+          <td class="text-center">{{test.test.testName}}</td>
+          <td class="text-center">{{test.appointment.doctor.doctorName}}</td>
+          <td class="text-center">{{test.appointment.doctor.department.departmentName}}</td>
+          <td class="text-center">{{test.testPresCreatedOn}}</td>
+          <td class="text-center">
+            <button class="btn btn-info" (click)="AddTestResult(test.testPrescriptionId,test.test.testId)">Add Result</button>
+            <button class="btn btn-info ml-2" (click)="updateTestResult(test.testPrescriptionId,test.test.testId)">Edit Result</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="footer text-center mt-3" style ="margin-left: 25%; margin-bottom: 23%;">
+      <pagination-controls  (pageChange)="page=($event)"></pagination-controls>
+    <!-- </div> -->
+  </div>
+</body>

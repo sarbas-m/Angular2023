@@ -1,0 +1,62 @@
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../assets/imagesjenisha/labtechnician.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  background-color: rgba(220,220,220, 0.3);
+  padding: 2rem;
+  border-radius: 15px;
+  height: 100%;
+}
+
+.container h3 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.table th {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.table {
+  background-color: rgba(255,255,255,0.5);
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+.table th {
+  text-align: center;
+}
+
+.table td.text-left {
+  text-align: left;
+}
+
+.rounded-table {
+  border-radius: 15px;
+}
+
+.search-input {
+  background-color: rgba(255,255,255,0.5);
+  color: black;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+#myTable{
+  width: 70%;
+  margin: 0 auto;
+  background-color: #DCDCDC;
+}

@@ -1,0 +1,60 @@
+<body>
+    
+<h2 style="text-align: center; font-size: 200%; font-family: fantasy; color: aliceblue;">Appointment List</h2>
+
+<div class="homebutton">
+    <button style="margin-top: 5%;"  class="btn btn-info" (click)="ToHome()">HOME</button>
+    </div>
+
+            <div>  
+            <input  style= "margin-top:-2.5%; margin-left: 45%; "  class="form-control w-50 search-input" type="text" placeholder="search text here.." [(ngModel)]="filter">
+        </div>
+        
+
+
+<table class="table table-bordered table-striped" id="myTable"> <!-- bootstrap class-->
+    <thead>
+    <tr>
+        <th>RegistrationNumber</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Department</th>
+        <th>DoctorName</th>
+        <th>appointmentDate</th>
+        <th>Token no</th>
+        <th>Action</th>
+        
+        
+    
+    </tr>
+    
+    </thead>
+    <tbody>
+    <tr *ngFor="let appoints of receptionistService.appointments| filter:filter | paginate:{itemsPerPage:5,currentPage:page}">  <!-- ngfor foreach  loop assigning all in emp employees is array -->
+        <td>{{appoints.patient.registrationNumber}}</td>
+        <td>{{appoints.patient.patientName}}</td>
+        <td>{{appoints.patient.patientAge}}</td>
+        <td>{{appoints.patient.patientGender}}</td>
+        <td>{{appoints.doctor.department.departmentName}}</td>
+        <td>{{appoints.doctor.doctorName}}</td>
+        <td>{{appoints.appCreatedOn}}</td>
+        <td>{{appoints.tokenNo}}</td>
+        
+        <td>
+            <button class="btn btn-sm btn-outline-danger" (click)="DeleteAppointment(appoints.appointmentId)">X</button>&nbsp;
+            <button class="btn btn-info" (click)="BillGenerate(appoints.patient.patientId)" style="margin-left: 10px;">BILL</button>
+            
+        </td>
+    
+    </tr>
+    
+    </tbody>
+    
+    </table>
+
+    <div class="footer" style="margin-left: 71%;">
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    
+    </div>
+</body>

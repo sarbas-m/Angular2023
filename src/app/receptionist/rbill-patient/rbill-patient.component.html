@@ -1,0 +1,64 @@
+<body class="banner"> 
+<h2 style="text-align: center; font-size: 200%;  color: aliceblue; margin-left: -10%;"><b>BILL</b></h2>
+<section class="vh-100 bg-image">
+    <!--  <img src="<spring:url value="/resources/images/background4.jpg" />" alt="Image"> -->
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+    <div
+    class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+    <div class="content">
+    <div class="card"
+    style="border-radius: 25px; margin-top:-55px; ">
+    <div class="card-body p-5" style="height: 550px;">
+    <div class="fa fa-hospital-o" style="font-size:48px; margin-bottom: 25px;">
+    <h4 style="margin-left: 25%;"><b>MED STAR HOSPITAL</b></h4>
+    <h6 style="margin-left: 30%;"><b>Thiruvananthapuram</b></h6>
+    <h6 style="margin-left: 40%;"><b>Kerala</b></h6>
+    
+    </div>
+
+<div style="margin-top: 7%;">
+<p *ngFor="let rbill of receptionistService.recbill"><b>Bill number :</b>{{rbill.billNo}}</p>
+<p *ngFor="let rbill of receptionistService.recbill"><b>Date:</b> {{rbill.date}}</p>
+<p *ngFor="let rbill of receptionistService.recbill"><b>Name:</b> {{rbill.patientName}}</p>
+<br>
+</div>
+
+<div style="margin-top: 8%;">
+<table class="table table-bordered table-striped">
+<tr *ngFor="let rbill of receptionistService.recbill">
+    <td><b>Registration Fee</b></td>
+    <td>{{rbill.regFee}}</td>  
+</tr>
+
+<tr *ngFor="let rbill of receptionistService.recbill">
+     <td><b>Consultation Fee</b></td>
+     <td>{{rbill.doctorFee}}</td>
+</tr>
+
+
+
+<tr  *ngFor="let rbill of receptionistService.recbill">
+    <td><b>Total</b></td>
+    <td><b>Rs.{{rbill.billAmount}}</b></td>
+</tr>
+
+
+</table>
+</div>
+
+<div style="margin-top: 11%;">
+<button style="margin-left: 2%;" class="btn btn-info" (click)="ToHome()">PRINT BILL</button>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</body>

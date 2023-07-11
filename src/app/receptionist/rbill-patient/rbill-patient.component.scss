@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    }
+    
+    .banner {
+    height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+            url('../../../assets/imagesAkash/receptionistbackground.jpg');
+            background-size: cover;
+            background-position: center;
+    animation: scrollBackground 90s linear infinite;
+    }
+    
+   
+    
+    
+    .card-body .form-group {
+    display: flex;
+    align-items: center;
+    //margin-top:4%;
+    
+    }
+    
+    .card-body .form-group span {
+    color: black;
+    }

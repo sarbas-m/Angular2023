@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-receptionist',
@@ -7,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReceptionistComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
+
+  WayToPatientForm(){
+
+    this.router.navigate(['app-radd-patient']);
+
+  }
+
+  WayToPatientList(){
+
+    this.router.navigate(['app-rlist-patient']);
+
+  }
+
+  WayToAppointmentList(){
+
+    this.router.navigate(['app-rlist-appointment']);
+  }
+
+  logout(){
+    localStorage.removeItem('USERNAME')
+    localStorage.removeItem('ACCESS_ROLE')
+
+    this.router.navigate(['login']);
+
+  }
+
 
 }

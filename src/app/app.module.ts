@@ -29,6 +29,14 @@ import { ViewTestReportComponent } from './labtechnician/view-test-report/view-t
 import { ViewTestBillComponent } from './labtechnician/view-test-bill/view-test-bill.component';
 
 
+import { RlistPatientComponent } from './receptionist/rlist-patient/rlist-patient.component';
+import { RaddPatientComponent } from './receptionist/radd-patient/radd-patient.component';
+import { ReditPatientComponent } from './receptionist/redit-patient/redit-patient.component';
+import { RbookAppointmentComponent } from './receptionist/rbook-appointment/rbook-appointment.component';
+import { RlistAppointmentComponent } from './receptionist/rlist-appointment/rlist-appointment.component';
+import { RbillPatientComponent } from './receptionist/rbill-patient/rbill-patient.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +44,7 @@ import { ViewTestBillComponent } from './labtechnician/view-test-bill/view-test-
     ReceptionistComponent,
     PharmacistComponent,
     LabtechnicianComponent,
+
     ListLabTestComponent,
     AddLabtestComponent,
     EditLabtestComponent,
@@ -49,6 +58,14 @@ import { ViewTestBillComponent } from './labtechnician/view-test-bill/view-test-
     ViewTestBillComponent,
     
     
+
+    RlistPatientComponent,
+    RaddPatientComponent,
+    ReditPatientComponent,
+    RbookAppointmentComponent,
+    RlistAppointmentComponent,
+    RbillPatientComponent
+
   ],
   imports: [
     BrowserModule,

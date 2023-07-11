@@ -1,0 +1,99 @@
+<body  class="banner">
+
+    <section class="vh-100 bg-image">
+        <!-- <img src="<spring:url value="/resources/images/background4.jpg" />" alt="Image"> -->
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 25px; margin-bottom: 40px; background-color: #808080;">
+                            <h2 style="text-align: center; font-size: 200%; font-family: fantasy;">Appointment Form</h2>
+                            <div class="card-body p-5">
+<form name="appointmentform" #form="ngForm" autocomplete="false" (ngSubmit)="onSubmit(form)">
+    <input type="hidden" name="appointmentId" [(ngModel)]="receptionistService.appointmentData.appointmentId">
+
+    <div class="form-group">
+        <label><b> Department:</b></label>
+        <select style="border: 1px solid black; margin-left: 10px;" name="departmentId" id="departmentId" class="form-control" required #departmentId="ngModel"
+            [(ngModel)]="receptionistService.appointmentData.departmentId">
+            <option value=0 disabled>Choose Department</option>
+            <option *ngFor="let dept of receptionistService.departments" value="{{dept.departmentId}}">
+                {{dept.departmentName}}</option>
+        </select>
+        <div class="validation-error" *ngIf="departmentId.touched && departmentId.invalid">
+            <div style="color: darkred;">*Department Required</div>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label><b> Doctor:</b></label>
+        <select style="border: 1px solid black; margin-left: 45px;" name="doctorId" id="doctorId" class="form-control" required #doctorId="ngModel"
+            [(ngModel)]="receptionistService.appointmentData.doctorId">
+            <option value=0 disabled>Choose Doctor</option>
+            <option *ngFor="let doc of receptionistService.doctors" value="{{doc.doctorId}}">
+                {{doc.doctorName}}</option>
+        </select>
+        <div class="validation-error" *ngIf="doctorId.touched && doctorId.invalid">
+            <div style="color: darkred;">*Doctor Reqiured</div>
+
+        </div>
+    </div>
+    <br>
+
+    <!--<div class="form-group">
+        <label>Enter appoinment date</label>
+
+        <input type="datetime-local" name="appCreatedOn" #appCreatedOn="ngModel"
+            [(ngModel)]="receptionistService.appointmentData.appCreatedOn" class="form-control" placeholder="enter date" required>
+        <div class="validation-error" *ngIf="appCreatedOn.touched&&appCreatedOn.invalid">
+            <div>Date is required</div>
+        </div>
+    </div>
+    <br>-->
+
+    <div class="form-group">
+        <label><b> Date: </b> </label>
+
+        <input style="border: 1px solid black; margin-left: 60px;" type="datetime-local" name="appCreatedOn" #appCreatedOn="ngModel"
+            [(ngModel)]="receptionistService.appointmentData.appCreatedOn" class="form-control" placeholder="enter date" [attr.min]="getCurrentDateTime()"
+            [attr.max]="getMaxDateTime()" required >
+        <div class="validation-error" *ngIf="appCreatedOn.touched&&appCreatedOn.invalid">
+            <div style="color: darkred;">*Date Required</div>
+        </div>
+        <div class="validation-error" *ngIf="appCreatedOn.errors?.pastDate">
+            <div>Please select a date from today onwards</div>
+          </div>
+          <div class="validation-error" *ngIf="appCreatedOn.errors?.futureDate">
+            <div>Please select a date within the next month</div>
+          </div>
+    </div>
+    <br>
+
+
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+            class="btn btn-lg btn-primary form-control">submit</button>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</form> 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>

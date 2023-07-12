@@ -1,0 +1,93 @@
+<section class="vh-100 bg-image">
+    <div class="banner">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div
+                    class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="content">
+                       <h1 style="color: antiquewhite;margin-left: 17%;">MEDICINE FORM</h1>
+                        <div class="card glass-style" style="border-radius: 25px; margin-top: 65px; ">
+                            <div class="card-body p-5">
+
+
+<form name="medform" #form="ngForm" autocomplete="false" (ngSubmit)="onSubmit(form)">
+    <input type="hidden" name="medicineId" [(ngModel)]="pharmaService.formData.medicineId">
+    <div class="form-group">
+        <label style="font-size: larger;"><strong>Medicine Name</strong></label>
+        <input  class="form-control custom-border" name="medicineName" #medicineName="ngModel" [(ngModel)]="pharmaService.formData.medicineName"
+            placeholder="Enter the Medicine name" minlength="3" maxlength="20" required
+            pattern="^[a-zA-Z0-9]+$">
+        <div class="validation-error" *ngIf="medicineName.touched && medicineName.invalid">
+            <div *ngIf="medicineName.errors.required">Name is required</div>
+            <div *ngIf="medicineName.errors.pattern" style="color: darkred;">*Check the Formate</div>
+        </div>
+    </div>
+    
+    <br>
+    <!-- <div class="form-group">
+        <label>Quantity</label>
+        <input name="quantity" #quantity="ngModel" [(ngModel)]="pharmaService.formData.quantity"
+            class="form-control" placeholder=" Enter quantity" required>
+        <div class="validation-error" *ngIf="quantity.touched&& quantity.invalid">
+            <div>quantity is required</div>
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label style="font-size: larger;"> <strong> Quantity </strong></label>
+        <input  class="form-control custom-border" name="quantity" #quantity="ngModel" [(ngModel)]="pharmaService.formData.quantity"
+         placeholder="Enter quantity" required
+          pattern="^[1-9]\d{2,3}$">
+      
+        <div class="validation-error" *ngIf="quantity.touched && quantity.invalid">
+          <div *ngIf="quantity.errors.required" style="color: red;">*Quantity is required.</div>
+          <div *ngIf="quantity.errors.pattern" style="color: red;">
+            *Quantity should be a positive number between 100 and 1000.
+          </div>
+        </div>
+      </div>
+    <br>
+  
+<div class="form-group">
+    <label style="font-size: larger;"><strong>Comapany Name </strong></label>
+    <select  class="form-control custom-border" name="companyId" id="companyId"  required
+    #companyId="ngModel" [(ngModel)]="pharmaService.formData.companyId">
+<!-- <option value =0 disabled>Choose Company</option> -->
+<option *ngFor="let cmp of pharmaService.medcompany" value ="{{cmp.companyId}}">
+{{cmp.companyName}}
+</option>
+</select>
+
+<div class="validation-error" *ngIf="companyId.touched && companyId.invalid">
+    <div>company is required</div>
+</div>
+</div> 
+<br>
+
+<div class="form-group">
+    <label style="font-size: larger;"> <strong> Price </strong></label>
+    <input name="price" #price="ngModel" [(ngModel)]="pharmaService.formData.price"
+    class="form-control custom-border" placeholder="Enter price" required>
+  
+    <div class="validation-error" *ngIf="price.touched&& price.invalid">
+        <div>price is required</div>
+    </div>
+</div>
+
+
+<div  class="form-group" style="margin-top: 25px;">
+    <button type="submit" [disabled]="!(form.valid && form.dirty)"
+    class="btn btn-lg btn-primary form-control custom-border">Submit</button>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+

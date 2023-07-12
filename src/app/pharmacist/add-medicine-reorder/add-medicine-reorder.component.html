@@ -1,0 +1,86 @@
+<section class="vh-100 bg-image">
+    <div class="banner">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="content">
+                            <h1 style="color: antiquewhite;margin-left: 17%;">MEDICINE FORM</h1>
+                            <div class="card glass-style" style="border-radius: 25px; margin-top: 65px; ">
+                                <div class="card-body p-5">
+                                   
+                                        
+                                    <div class="form-group">
+                                        <form name="medform" #form="ngForm" autocomplete="false"
+                                            (ngSubmit)="onSubmit(form)">
+                                        <input type="hidden" name="orderId" [(ngModel)]="pharmaService.formReOrder.orderId">
+                                    
+                                        <label style="font-size: larger;"> <strong> Quantity </strong></label>
+                                        <input class="form-control custom-border" name="orderQty" #orderQty="ngModel"
+                                            [(ngModel)]="pharmaService.formReOrder.orderQty"
+                                            placeholder="Enter quantity" required pattern="^[1-9]\d{2,3}$">
+
+                                        <div class="validation-error" *ngIf="orderQty.touched && orderQty.invalid">
+                                            <div *ngIf="orderQty.errors.required" style="color: red;">*Quantity is
+                                                required.</div>
+                                            <div *ngIf="orderQty.errors.pattern" style="color: red;">
+                                                *Quantity should be a positive number between 100 and 1000.
+                                            </div>
+                                        </div>
+                                   
+                                    <br>
+
+                                    <div class="form-group">
+                                        <label style="font-size: larger;"><strong>Comapany Name </strong></label>
+                                        <select class="form-control custom-border" name="companyId" id="companyId"
+                                            required #companyId="ngModel"
+                                            [(ngModel)]="pharmaService.formReOrder.companyId">
+                                            <!-- <option value =0 disabled>Choose Company</option> -->
+                                            <option *ngFor="let cmp of pharmaService.medcompany"
+                                                value="{{cmp.companyId}}">
+                                                {{cmp.companyName}}
+                                            </option>
+                                        </select>
+
+                                        <div class="validation-error" *ngIf="companyId.touched && companyId.invalid">
+                                            <div>company is required</div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label style="font-size: larger;"><strong>Medicine Name </strong></label>
+                                        <select class="form-control custom-border" name="medicineId" id="medicineId"
+                                            required #medicineId="ngModel"
+                                            [(ngModel)]="pharmaService.formReOrder.medicineId">
+                                            <!-- <option value =0 disabled>Choose Company</option> -->
+                                            <option *ngFor="let cmp of pharmaService.pmedicine"
+                                                value="{{cmp.medicineId}}">
+                                                {{cmp.medicineName}}
+                                            </option>
+                                        </select>
+
+                                        <div class="validation-error" *ngIf="companyId.touched && companyId.invalid">
+                                            <div>Medicine is required</div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group" style="margin-top: 25px;">
+                                        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+                                            class="btn btn-lg btn-primary form-control custom-border">Submit</button>
+                                    </div>
+
+                                    
+
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

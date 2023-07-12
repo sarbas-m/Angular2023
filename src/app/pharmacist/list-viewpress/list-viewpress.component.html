@@ -1,0 +1,52 @@
+<section class="vh-100 bg-image">
+    <div class="banner">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div
+                    class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="content">
+                        <div class="card" style="border-radius: 25px; margin-top: 65px; background:#F0F3F4;">
+                            <div class="card-body p-5">
+                                <h3>MEDICINE PRESCRIPTION</h3>
+							<br>
+  <ng-container *ngIf="presService.medprescription.length > 0">
+      <p><strong>Name:</strong> {{presService.medprescription[presService.medprescription.length - 1].appointment.patient.registrationNumber}}</p>
+      <p><strong>Age:</strong> {{presService.medprescription[presService.medprescription.length - 1].appointment.patient.patientName}}</p>
+      <p><strong>Doctor Name:</strong></p>
+      <p><strong>Date:</strong></p>
+    </ng-container>
+    <table class="table table-hover" id="myTable"
+    style="margin-top: 70px;">
+    <thead class="thead-dark">
+      
+        <tr>
+            <th>Medicine Number</th>
+            <th>Medicine Name</th>
+            <th>Dosage</th>
+            <th>Days</th>  
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let pres of presService.medprescription ">
+         <td>{{pres.medicine.medicineNumber}}</td>
+         <td>{{pres.medicine.medicineName}}</td>
+         <td>{{pres.dosage.dosagePattern}}</td>
+         <td>{{pres.days}}</td>
+              
+         </tr>
+    </tbody>
+</table>
+<ng-container *ngIf="presService.medprescription.length > 0">
+    <button class="btn btn-info" (click)="ViewBill(presService.medprescription[presService.medprescription.length - 1].appointmentId)" style="margin-top: 10px">Generate Bill</button>
+  </ng-container>
+</div>
+</div>
+ </div>
+</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ 
+ </section>

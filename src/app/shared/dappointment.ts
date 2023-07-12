@@ -4,6 +4,7 @@ export class Dappointment {
     tokenNo: number;
     appointmentIsActive: string;
     patientId: number;
+    appCreatedOn:Date;
     patient: {
       registrationNumber: string;
       patientName: string;

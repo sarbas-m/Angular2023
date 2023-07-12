@@ -28,6 +28,9 @@ export class DoctorComponent implements OnInit {
     console.log(this.userId)
     this.router.navigate(['app-list-doctor-appointment',this.userId]);
   }
+  appointmentListDisable(){
+    this.router.navigate(['app-list-disable-appointment',this.userId])
+  }
   
   logout(){
     localStorage.removeItem('USERNAME')

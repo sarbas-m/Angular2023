@@ -27,6 +27,9 @@ import {ReditPatientComponent} from './receptionist/redit-patient/redit-patient.
 import { RbookAppointmentComponent } from './receptionist/rbook-appointment/rbook-appointment.component';
 import { RlistAppointmentComponent } from './receptionist/rlist-appointment/rlist-appointment.component';
 import { RbillPatientComponent } from './receptionist/rbill-patient/rbill-patient.component';
+import { ListDisableAppointmentComponent } from './doctor/list-disable-appointment/list-disable-appointment.component';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import { PasswordFormComponent } from './login/password-form/password-form.component';
 
 
 const routes: Routes = [
@@ -42,7 +45,11 @@ const routes: Routes = [
   {path:'app-list-doctor-form/:userId/:tokenNo/:patientId/:appointmentId',component:ListDoctorFormComponent},
   {path:'app-pharmacist',component:PharmacistComponent,canActivate:[AuthGuard],data:{role:'4'}},
   {path:'app-labtechnician',component:LabtechnicianComponent,canActivate:[AuthGuard],data:{role:'3'}},
+  {path:'app-list-disable-appointment/:userId',component:ListDisableAppointmentComponent},
+  {path:'app-forgot-password',component:ForgotPasswordComponent},
+  {path:'app-password-form/:userId',component:PasswordFormComponent},
   //receptionist
+  
    {path:'app-receptionist',component:ReceptionistComponent},
    {path:'app-rlist-appointment',component:RlistAppointmentComponent},
    {path:'rpatient-list',component:RlistPatientComponent},

@@ -32,6 +32,9 @@ export class LoginComponent implements OnInit {
       
     })
   }
+  forgot(){
+    this.router.navigate(['app-forgot-password'])
+  }
   get formControls() {
     return this.loginForm.controls;
   }
@@ -54,7 +57,7 @@ export class LoginComponent implements OnInit {
       this.authService.loginVerify(this.loginForm.value).subscribe(
         response => {
           this.error = '';
-          console.log(response);
+          console.log("hi res"+response);
           //set sessionstorage and localstorage(browser->inspect->application)
           //SessionStorage-changes browser to browser
           //store the values of response.uName and response.roleId

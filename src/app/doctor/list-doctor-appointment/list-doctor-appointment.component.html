@@ -19,7 +19,7 @@
                 <th>Name</th>
                 <th>Blood Gruop</th>
                 <th>Age</th>
-                <th>Mobile</th>
+                <th>Appointment Time</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -32,7 +32,7 @@
                 <td>{{app.patient.patientBloodGroup}}</td>
 
                 <td>{{app.patient.patientAge}}</td>
-                <td>{{app.patient.patientPhoneNumber}}</td>
+                <td>{{app.appCreatedOn}}</td>
                 <td><button class="btn btn-info" (click)="consultPatient(app.tokenNo)"
                         style="margin-left: 10px;">Consult</button></td>
             </tr>

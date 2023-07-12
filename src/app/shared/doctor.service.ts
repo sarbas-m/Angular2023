@@ -43,6 +43,17 @@ export class DoctorService {
         console.error('An error occurred:', error);
       });
   }
+  BindListDisableAppointment(userId: number) {
+    this.httpClient.get(environment.apiUrl + "/api/doctorAppointmentsDisable/" + userId)
+      .toPromise()
+      .then(response => {
+        this.dappointments = response as Dappointment[];
+      })
+      .catch(error => {
+        // Handle any error that occurred during the HTTP request
+        console.error('An error occurred:', error);
+      });
+  }
   BindListPatient(tokenNo:number){
     console.log(tokenNo)
     this.httpClient.get(environment.apiUrl + "/api/doctorPatient/" + tokenNo)

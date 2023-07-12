@@ -1,0 +1,49 @@
+<body class="banner">
+
+    <h3 style="text-align: center;color: aliceblue;"><strong>EXPIRED APPOINTMENTS</strong></h3>
+    <button class="btn btn-info" (click)="home()"
+                            style="margin-left: 15%;margin-top: 6%;">Home</button>
+    <div *ngIf="doctorServices.dappointments.length > 0; else noDiagnosHistory">
+        <div class="container">
+            <div class="header">
+                <div >
+                    <input class="form-control w-50 search-input"  style="margin-left: 41%;margin-top: -3%;" type="text" placeholder="search text here.." [(ngModel)]="filter">
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover" style="margin-top: 20px;"  id="myTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Token No</th>
+                    <th>Patient RegNo</th>
+                    <th>Name</th>
+                    <th>Blood Gruop</th>
+                    <th>Age</th>
+                    <th>Appointment Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let app of doctorServices.dappointments | filter:filter | paginate:{itemsPerPage:3,currentPage:page}">
+                    <td>{{app.tokenNo}}</td>
+                    <td>{{app.patient.registrationNumber}}</td>
+                    <td>{{app.patient.patientName}}</td>
+                    <td>{{app.patient.patientBloodGroup}}</td>  
+                    <td>{{app.patient.patientAge}}</td>
+                    <td>{{app.appCreatedOn}}</td>
+                    <td><button class="btn btn-info" (click)="consultPatient(app.tokenNo)"
+                            style="margin-left: 10px;">Consult</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="footer" style="margin-left: 890px; margin-top: 20px;">
+    
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    
+    </div>
+    <ng-template #noDiagnosHistory>
+        <p>No Appointment available</p>
+    </ng-template>
+    </body>

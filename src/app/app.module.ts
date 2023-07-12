@@ -42,6 +42,9 @@ import { ReditPatientComponent } from './receptionist/redit-patient/redit-patien
 import { RbookAppointmentComponent } from './receptionist/rbook-appointment/rbook-appointment.component';
 import { RlistAppointmentComponent } from './receptionist/rlist-appointment/rlist-appointment.component';
 import { RbillPatientComponent } from './receptionist/rbill-patient/rbill-patient.component';
+import { ListDisableAppointmentComponent } from './doctor/list-disable-appointment/list-disable-appointment.component';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import { PasswordFormComponent } from './login/password-form/password-form.component';
 
 
 @NgModule({
@@ -76,7 +79,10 @@ import { RbillPatientComponent } from './receptionist/rbill-patient/rbill-patien
     ReditPatientComponent,
     RbookAppointmentComponent,
     RlistAppointmentComponent,
-    RbillPatientComponent
+    RbillPatientComponent,
+    ListDisableAppointmentComponent,
+    ForgotPasswordComponent,
+    PasswordFormComponent
 
   ],
   imports: [

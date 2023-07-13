@@ -1,0 +1,50 @@
+ 
+    <body class="bannermedicine">
+        <div style="margin-right: 5%;">
+            
+<!--   
+            <input class="form-control"  style="width: 400px; " type="text" placeholder="search text here.." [(ngModel)]="filter"> -->
+        
+    <button [routerLink]="['../']" class="btn btn-primary" (click)="toReorder()"
+    style=" margin-bottom: 10px; margin-left: 980px; margin-top: 30px;">Re-Order Medicine</button>
+    <button class="btn btn-primary" (click)="home()"
+    style=" margin-bottom: 10px; margin-left: 980px; margin-top: 30px;">Home</button>
+    
+    <!-- <div style="margin-top: 6%; margin-left: 5%;"><button class="btn btn-info" (click)="ToHome()">HOME</button></div> -->
+    <div>  
+        <input  style= "margin-top:10px; margin-left: 39%; "  class="form-control w-50 search-input" type="text" placeholder="search text here.." [(ngModel)]="filter">
+    </div>
+    </div>
+    <table class="table table-hover" id="myTable"
+    style="margin-top: 30px;">
+    <thead class="thead-dark">
+          
+            <tr>
+                <th scope="col">Order No</th>
+                <th scope="col">Medicine Name</th>
+                <th scope="col">Company Name</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Date</th>
+               
+                
+            </tr>
+        </thead>
+        <tbody>
+             <tr *ngFor="let ord of orderService.ordermed | filter:filter|paginate:{itemsPerPage:5,currentPage:page}">
+             
+             <td>{{ord.orderId}}</td>
+             <td>{{ord.medicine.medicineName}}</td>
+             <td>{{ord.medicineCompany.companyName}}</td>
+             <td>{{ord.orderQty}}</td>
+             <td>{{ord.orderOn}}</td>
+                     
+             </tr>
+        </tbody>
+    </table>
+    
+    <div class ="footer"  style="margin-left: 890px; margin-top: 20px;">
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>
+    </body>
+
+

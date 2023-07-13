@@ -1,0 +1,49 @@
+<section class="vh-100 bg-image">
+    <div class="banner">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div
+                    class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="content">
+                       <h1 style="color: antiquewhite; margin-left: 170px;">COMPANY FORM</h1>
+                        <div class="card glass-style"  style="border-radius: 25px; margin-top: 65px; margin-left:100px; ">
+                            <div class="card-body p-5">
+
+
+
+<form name="medform" #form="ngForm" autocomplete="false" (ngSubmit)="onSubmit(form)">
+    <input type="hidden" name="companyId" [(ngModel)]="pharmaService.formData.companyId">
+    <div class="form-group">
+
+
+
+        <label style="font-size: larger;"> <strong> Company Name: </strong></label>
+        <br>
+        <input name="companyName" #companyName="ngModel" [(ngModel)]="pharmaService.formDatacompany.companyName"
+            class="form-control custom-border" placeholder="Enter the Company name" minlength="3" maxlength="20" required>
+        <div class="validation-error" *ngIf="companyName.touched&& companyName.invalid">
+            <div>name is requrired</div>
+        </div>
+    </div>
+    <br>
+   
+
+
+<div  class="form-group">
+    <button type="submit" [disabled]="!(form.valid && form.dirty)"
+    class="btn btn-lg btn-primary form-control custom-border">Submit</button>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+

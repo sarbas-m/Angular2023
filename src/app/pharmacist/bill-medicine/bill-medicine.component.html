@@ -1,0 +1,68 @@
+<body class="banner">
+	<section class="vh-100 bg-image">
+		<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+			<div class="container h-100">
+				<div
+					class="row d-flex justify-content-center align-items-center h-100">
+					<div class="col-12 col-md-9 col-lg-7 col-xl-6">
+						<div class="content">
+							<div class="card" style="border-radius: 25px; margin-top: 45px;">
+								<div class="card-body p-5">
+									<div class="fa fa-hospital-o">
+										<h4 style="margin-left: 100px;">MED STAR HOSPITAL</h4>
+										<h5 style="margin-left: 120px;">Thiruvananthapuram,</h5>
+										<h5 style="margin-left: 190px;">Kerala</h5>
+									</div>
+								
+ <ng-container *ngFor="let bill of billService.billmed; last as isLast">
+    <ng-container *ngIf="isLast">
+      <p><strong>Patient Name : </strong> {{bill.patientName}}</p>
+      <p><strong>Patient RegNo : </strong>{{bill.patientRegNo}}</p>
+      <p><strong>Bill Number : </strong>{{bill.billNo}}</p>
+      <p><strong>Date : </strong>{{bill.date}}</p>
+    </ng-container>
+  </ng-container>
+  <table class="table table-hover" id="myTable"
+  style="margin-top: 70px;">
+  <thead class="thead-dark">
+     
+        <tr>
+            <th>Medicine Name</th>
+            <th>Qty</th>
+            <th>MedicinePrice</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let bill of billService.billmed">
+         <td>{{bill.medicineName}}</td>
+         <td>{{bill.qty}}</td>
+         <td>{{bill.medicinePrice}}</td>
+         <td>{{bill.perPrice}}</td>
+        <!-- <td>
+            <button class="btn btn-info" (click)="ViewBill()" style="margin-left: 10px">Gnerate bill</button> 
+        </td> -->
+      
+        
+         </tr>
+    </tbody>
+</table>
+<ng-container *ngFor="let bill of billService.billmed; last as isLast">
+    <ng-container *ngIf="isLast">
+      <p style="margin-left: 300px;"><strong>Total Price: </strong>{{bill.totalPrice}}</p>
+    </ng-container>
+  </ng-container>
+
+  <button class="btn btn-info" (click)="DisablePrescription()" style="margin-left: 10px">Print bill</button> 
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</section>
+
+
